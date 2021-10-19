@@ -7,6 +7,6 @@ Inspired by the method showcased in Kent Beck's Test Driven Development: By Exam
 - [ ] can parse CSV to JSON
 - [ ] can parse CSV with no activities to JSON
 - [ ] can parse CSV with note to JSON
-- [ ] can serialise JSON to string
-- [ ] can serialise JSON without activities to string
-- [ ] can serialise JSON with note to string
+- [x] can serialise JSON to string
+- [x] can serialise JSON without activities to string
+- [x] can serialise JSON with note to string
