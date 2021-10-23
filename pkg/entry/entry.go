@@ -11,10 +11,10 @@ import (
 
 type entry struct {
 	Date       time.Time `json:"date"`
-	Mood       string   `json:"mood"`
-	Activities []string `json:"activities"`
-	NoteTitle string `json:"note_title"`
-	Note      string `json:"note"`
+	Mood       string    `json:"mood"`
+	Activities []string  `json:"activities"`
+	NoteTitle  string    `json:"note_title"`
+	Note       string    `json:"note"`
 }
 
 type Entries struct {
@@ -22,12 +22,12 @@ type Entries struct {
 }
 
 var (
-	CsvHeaderIndex = 0
-	FullDateIndex = 0
-	TimeIndex = 3
-	MoodIndex = 4
-	ActivitiesIndex = 5
-	NoteTitleIndex = 6
+	CsvHeaderIndex   = 0
+	FullDateIndex    = 0
+	TimeIndex        = 3
+	MoodIndex        = 4
+	ActivitiesIndex  = 5
+	NoteTitleIndex   = 6
 	NoteContentIndex = 7
 )
 
@@ -49,11 +49,11 @@ func ParseEntriesFromCSV(csvData []byte) (Entries, error) {
 			}
 
 			entries = append(entries, entry{
-				Date: date,
-				Mood: record[MoodIndex],
+				Date:       date,
+				Mood:       record[MoodIndex],
 				Activities: parseActivitiesFromEntry(record[ActivitiesIndex]),
-				NoteTitle: record[NoteTitleIndex],
-				Note: record[NoteContentIndex],
+				NoteTitle:  record[NoteTitleIndex],
+				Note:       record[NoteContentIndex],
 			})
 		}
 	}
@@ -79,7 +79,6 @@ func parseDateFromEntry(date string, timeRecorded string) (time.Time, error) {
 		hour = (hour + 12) % 24
 		minute, err = strconv.Atoi(timeStrings[1])
 	}
-
 
 	if err != nil {
 		return time.Time{}, err

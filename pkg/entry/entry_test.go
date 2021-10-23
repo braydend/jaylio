@@ -9,16 +9,16 @@ import (
 func TestParseEntriesFromCSV(t *testing.T) {
 	t.Run("converts CSV correctly", func(t *testing.T) {
 		amRecordCsv := []byte("full_date,Date,weekday,time,Mood,Activities,note_title,Note\n2021-10-18,18 October,Monday,11:25 am,Energised,\"home | appreciate\",\"\",\"\"")
-		amRecords := Entries{[]entry{{time.Date(2021,10,18,11,25, 0, 0, time.Local), "Energised", []string{"home", "appreciate"}, "", ""}}}
+		amRecords := Entries{[]entry{{time.Date(2021, 10, 18, 11, 25, 0, 0, time.Local), "Energised", []string{"home", "appreciate"}, "", ""}}}
 
 		pmRecordCsv := []byte("full_date,Date,weekday,time,Mood,Activities,note_title,Note\n2021-10-18,18 October,Monday,11:25 pm,Energised,\"home | appreciate\",\"\",\"\"")
-		pmRecords := Entries{[]entry{{time.Date(2021,10,18,23,25, 0, 0, time.Local), "Energised", []string{"home", "appreciate"}, "", ""}}}
+		pmRecords := Entries{[]entry{{time.Date(2021, 10, 18, 23, 25, 0, 0, time.Local), "Energised", []string{"home", "appreciate"}, "", ""}}}
 
 		noActivityRecordsCsv := []byte("full_date,Date,weekday,time,Mood,Activities,note_title,Note\n2021-10-18,18 October,Monday,11:25 pm,Energised,\"\",\"\",\"\"")
-		noActivityRecords := Entries{[]entry{{time.Date(2021,10,18,23,25, 0, 0, time.Local), "Energised", []string{}, "", ""}}}
+		noActivityRecords := Entries{[]entry{{time.Date(2021, 10, 18, 23, 25, 0, 0, time.Local), "Energised", []string{}, "", ""}}}
 
 		noteRecordsCsv := []byte("full_date,Date,weekday,time,Mood,Activities,note_title,Note\n2021-10-18,18 October,Monday,11:25 pm,Energised,\"home | appreciate\",\"\",\"Today I wrote some tests\"")
-		noteRecords := Entries{[]entry{{time.Date(2021,10,18,23,25, 0, 0, time.Local), "Energised", []string{"home", "appreciate"}, "", "Today I wrote some tests"}}}
+		noteRecords := Entries{[]entry{{time.Date(2021, 10, 18, 23, 25, 0, 0, time.Local), "Energised", []string{"home", "appreciate"}, "", "Today I wrote some tests"}}}
 
 		tests := []struct {
 			name     string
@@ -43,7 +43,7 @@ func TestParseEntriesFromCSV(t *testing.T) {
 }
 
 func TestEntries_toString(t *testing.T) {
-	date := time.Date(2021,10,18,11,25, 0, 0, time.Local)
+	date := time.Date(2021, 10, 18, 11, 25, 0, 0, time.Local)
 	withActivities := Entries{[]entry{{date, "Energized", []string{"home", "appreciate"}, "", ""}}}
 	withoutActivities := Entries{[]entry{{date, "Energized", []string{}, "", ""}}}
 	withNote := Entries{[]entry{{date, "Energized", []string{}, "Note's title", "Note's content"}}}
